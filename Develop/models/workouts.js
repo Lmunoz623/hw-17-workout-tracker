@@ -15,22 +15,30 @@ const workoutSchema = new Schema({
             required: "Exercise type cannot be left blank."
         },
         name: {
-            
+            type: String,
+            trim: true,
+            required: "Name cannot be left blank."
         },
         duration: {
-
+            type: Number,
+            required: "Duration cannot be left blank."
         },
         weight: {
-
+            type: Number
         },
         reps: {
-
+            type: Number
         },
         sets: {
-
+            type: Number
+        },
+        distance: {
+            type: Number
         }  
       }
   ]
 });
 
 const Workout = mongoose.model("Workout", workoutSchema);
+
+module.exports = Workout;
