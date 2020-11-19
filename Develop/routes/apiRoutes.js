@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const { json } = require("express");
-const Workout = require("../models/workouts");
+const Workout = require("../models");
 
 router.get("/api/workouts", (req, res) => {
   Workout.find({})
@@ -13,7 +12,7 @@ router.get("/api/workouts", (req, res) => {
 });
 
 router.put("/api/workouts/:id", ({ body, params }, res) => {
-    Workout.findByIdAndUpdate(params.id, { $push: { exercises: body} }, { new: true }})
+    Workout.findByIdAndUpdate(params.id, { $push: { exercises: body} }, { new: true })
     .then(dbWorkout => {
         res/json(dbWorkout);
     })
